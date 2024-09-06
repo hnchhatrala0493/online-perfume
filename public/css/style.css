@@ -1,0 +1,28 @@
+body{
+    margin: 15px;
+    padding:12px;
+}
+.container{
+    display: flexbox;
+    padding: 5px;
+    /* border-style: groove 0.5px; */
+    /* background-color: rgb(137, 135, 135); */
+    
+}
+input[type='text']{
+    font-size: medium;
+    font-family: 'Courier New', Courier, monospace;
+    height: 25px;
+}
+
+.form-body{
+    background-color: rgb(177, 175, 175);
+    padding: 25px;
+}
+
+.findbtn{
+    display: flex;
+    width: 100px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: white;
+}
