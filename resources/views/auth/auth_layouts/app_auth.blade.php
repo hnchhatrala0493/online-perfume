@@ -4,7 +4,7 @@
 
 <head>
     <base href="../../../">
-    <title>{{ env('APP_NAME')}}</title>
+    <title>Metronic - the world's #1 selling Bootstrap Admin Theme Ecosystem for HTML, Vue, React, Angular &amp; Laravel by Keenthemes</title>
     <meta charset="utf-8" />
     <meta name="description" content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Blazor, Django, Flask &amp; Laravel versions. Grab your copy now and get life-time updates for free."
     />
@@ -29,44 +29,51 @@
 <!--end::Head-->
 <!--begin::Body-->
 
-<body data-kt-name="metronic" id="kt_body" class="app-blank app-blank">
+<body data-kt-name="metronic" id="kt_body" class="app-blank app-blank bgi-size-cover bgi-position-center bgi-no-repeat">
+    <!--begin::Root-->
     <div class="d-flex flex-column flex-root" id="kt_app_root">
+        <!--begin::Page bg image-->
+        <style>
+            body {
+                background-image: url('assets/media/auth/bg10.jpeg');
+            }
+            
+            [data-theme="dark"] body {
+                background-image: url('assets/media/auth/bg10-dark.jpeg');
+            }
+        </style>
+        <!--end::Page bg image-->
         <!--begin::Authentication - Sign-in -->
         <div class="d-flex flex-column flex-lg-row flex-column-fluid">
-            <!--begin::Logo-->
-            <a href="../../demo1/dist/index.html" class="d-block d-lg-none mx-auto py-20">
-                <img alt="Logo" src="assets/media/logos/default.svg" class="theme-light-show h-25px" />
-                <img alt="Logo" src="assets/media/logos/default-dark.svg" class="theme-dark-show h-25px" />
-            </a>
-            <!--end::Logo-->
             <!--begin::Aside-->
-            <div class="d-flex flex-column flex-column-fluid flex-center w-lg-50 p-10">
-                <!--begin::Wrapper-->
-                <div class="d-flex justify-content-between flex-column-fluid flex-column w-100 mw-450px">
-                    <!--begin::Header-->
-                    <div class="d-flex flex-stack py-2">
-                        <!--begin::Back link-->
-                        <div class="me-2"></div>
-                        <!--end::Back link-->
-                        <!--begin::Sign Up link-->
-                        <div class="m-0">
-                            <span class="text-gray-400 fw-bold fs-5 me-2" data-kt-translate="sign-in-head-desc">Not a Member yet?</span>
-                            <a href="../../demo1/dist/authentication/layouts/fancy/sign-up.html" class="link-primary fw-bold fs-5" data-kt-translate="sign-in-head-link">Sign Up</a>
-                        </div>
-                        <!--end::Sign Up link=-->
-                    </div>
-                    <!--end::Header-->
-                    <!--begin::Body-->
+            <div class="d-flex flex-lg-row-fluid">
+                <!--begin::Content-->
+                <div class="d-flex flex-column flex-center pb-0 pb-lg-10 p-10 w-100">
+                    <!--begin::Image-->
+                    <img class="theme-light-show mx-auto mw-100 w-150px w-lg-300px mb-10 mb-lg-20" src="assets/media/auth/agency.png" alt="" />
+                    <img class="theme-dark-show mx-auto mw-100 w-150px w-lg-300px mb-10 mb-lg-20" src="assets/media/auth/agency-dark.png" alt="" />
+                    <!--end::Image-->
+                    <!--begin::Title-->
+                    <h1 class="text-gray-800 fs-2qx fw-bold text-center mb-7">Fast, Efficient and Productive</h1>
+                    <!--end::Title-->
+                    <!--begin::Text-->
+                    <div class="text-gray-600 fs-base text-center fw-semibold">In this kind of post,
+                        <a href="#" class="opacity-75-hover text-primary me-1">the blogger</a>introduces a person they’ve interviewed
+                        <br />and provides some background information about
+                        <a href="#" class="opacity-75-hover text-primary me-1">the interviewee</a>and their
+                        <br />work following this is a transcript of the interview.</div>
+                    <!--end::Text-->
+                </div>
+                <!--end::Content-->
+            </div>
+                <!--begin::Aside-->
                     @yield('content')
                     <!--end::Body-->
                 </div>
                 <!--end::Wrapper-->
             </div>
             <!--end::Aside-->
-            <!--begin::Body-->
-            <div class="d-none d-lg-flex flex-lg-row-fluid w-50 bgi-size-cover bgi-position-y-center bgi-position-x-start bgi-no-repeat" style="background-image: url(assets/media/auth/bg11.png)"></div>
-            <!--begin::Body-->
-        </div>
+            </div>
         <!--end::Authentication - Sign-in-->
     </div>
     <!--end::Root-->
@@ -80,7 +87,6 @@
     <!--end::Global Javascript Bundle-->
     <!--begin::Custom Javascript(used by this page)-->
     <script src="assets/js/custom/authentication/sign-in/general.js"></script>
-    <script src="assets/js/custom/authentication/sign-in/i18n.js"></script>
     <!--end::Custom Javascript-->
     <!--end::Javascript-->
 </body>

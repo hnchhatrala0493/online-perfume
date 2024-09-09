@@ -1,81 +1,94 @@
 @extends('auth.auth_layouts.app_auth')
+
 @section('content')
-<div class="py-20">
-    <!--begin::Form-->
-    <form class="form w-100" method="POST" action="{{ route('login') }}">
-        @csrf
-        <div class="card-body">
-            <!--begin::Heading-->
-            <div class="text-start mb-10">
-                <!--begin::Title-->
-                <h1 class="text-dark mb-3 fs-3x" data-kt-translate="sign-in-title">Sign In</h1>
-                <!--end::Title-->
-                <!--begin::Text-->
-                <!--end::Link-->
-            </div>
-            <!--begin::Heading-->
-            <!--begin::Input group=-->
-            <div class="fv-row mb-8">
-                <!--begin::Email-->
-                <input type="text" placeholder="Email" name="email" autocomplete="off" class="form-control form-control-solid @error('email') is-invalid @enderror" />
-                <!--end::Email-->
-            </div>
-            <!--end::Input group=-->
-            <div class="fv-row mb-7">
-                <!--begin::Password-->
-                <input type="text" placeholder="Password" name="password" autocomplete="off" class="form-control form-control-solid @error('password') is-invalid @enderror" />
-                <!--end::Password-->
-            </div>
-            <!--end::Input group=-->
-            <!--begin::Wrapper-->
-            <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-10">
-                <div></div>
-                <!--begin::Link-->
-                <a href="{{ route('password.request') }}" class="link-primary" data-kt-translate="sign-in-forgot-password">{{ __('Forgot Your Password?') }}</a>
-                <!--end::Link-->
-            </div>
-            <!--end::Wrapper-->
-            <!--begin::Actions-->
-            <div class="d-flex flex-stack">
-                <!--begin::Submit-->
-                <button id="kt_sign_in_submit" class="btn btn-primary me-2 flex-shrink-0">
-                        <!--begin::Indicator label-->
-                        <span class="indicator-label" data-kt-translate="sign-in-submit">Sign In</span>
-                        <!--end::Indicator label-->
-                        <!--begin::Indicator progress-->
-                        <span class="indicator-progress">
-                            <span data-kt-translate="general-progress">Please wait...</span>
-                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                        </span>
-                        <!--end::Indicator progress-->
-                    </button>
-                <!--end::Submit-->
-                <!--begin::Social-->
-                <div class="d-flex align-items-center">
-                    <div class="text-gray-400 fw-semibold fs-6 me-3 me-md-6" data-kt-translate="general-or">Or</div>
-                    <!--begin::Symbol-->
-                    <a href="#" class="symbol symbol-circle symbol-45px w-45px bg-light me-3">
-                        <img alt="Logo" src="assets/media/svg/brand-logos/google-icon.svg" class="p-4" />
-                    </a>
-                    <!--end::Symbol-->
-                    <!--begin::Symbol-->
-                    <a href="#" class="symbol symbol-circle symbol-45px w-45px bg-light me-3">
-                        <img alt="Logo" src="assets/media/svg/brand-logos/facebook-3.svg" class="p-4" />
-                    </a>
-                    <!--end::Symbol-->
-                    <!--begin::Symbol-->
-                    <a href="#" class="symbol symbol-circle symbol-45px w-45px bg-light">
-                        <img alt="Logo" src="assets/media/svg/brand-logos/apple-black.svg" class="theme-light-show p-4" />
-                        <img alt="Logo" src="assets/media/svg/brand-logos/apple-black-dark.svg" class="theme-dark-show p-4" />
-                    </a>
-                    <!--end::Symbol-->
+<div class="d-flex flex-column-fluid flex-lg-row-auto justify-content-center justify-content-lg-end p-12">
+    <!--begin::Wrapper-->
+    <div class="bg-body d-flex flex-center rounded-4 w-md-600px p-10">
+        <!--begin::Content-->
+        <div class="w-md-400px">
+            <!--begin::Form-->
+            <form class="form w-100" method="post" action="{{route('login')}}">
+                <!--begin::Heading-->
+                @csrf
+                <div class="text-center mb-11">
+                    <!--begin::Title-->
+                    <h1 class="text-dark fw-bolder mb-3">Sign In</h1>
+                    <!--end::Title-->
+                    <!--begin::Subtitle-->
+                    <div class="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
+                    <!--end::Subtitle=-->
                 </div>
-                <!--end::Social-->
-            </div>
-            <!--end::Actions-->
+                <!--begin::Heading-->
+                <!--begin::Login options-->
+                <div class="row g-3 mb-9">
+                    <!--begin::Col-->
+                    <div class="col-md-6">
+                        <!--begin::Google link=-->
+                        <a href="#"
+                            class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
+                            <img alt="Logo" src="assets/media/svg/brand-logos/google-icon.svg"
+                                class="h-15px me-3" />Sign in with Google</a>
+                        <!--end::Google link=-->
+                    </div>
+                    <!--end::Col-->
+                    <!--begin::Col-->
+                </div>
+                <!--end::Login options-->
+                <!--begin::Separator-->
+                <div class="separator separator-content my-14">
+                    <span class="w-125px text-gray-500 fw-semibold fs-7">Or with email</span>
+                </div>
+                <!--end::Separator-->
+                <!--begin::Input group=-->
+                <div class="fv-row mb-8">
+                    <!--begin::Email-->
+                    <input type="text" placeholder="Email" name="email" autocomplete="off"
+                        class="form-control @error('email') is-invalid @enderror" />
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                    <!--end::Email-->
+                </div>
+                <!--end::Input group=-->
+                <div class="fv-row mb-3">
+                    <!--begin::Password-->
+                    <input type="password" placeholder="Password" name="password" autocomplete="off"
+                        class="form-control @error('password') is-invalid @enderror" />
+                    <!--end::Password-->
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <!--end::Input group=-->
+                <!--begin::Wrapper-->
+                <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
+                    <div></div>
+                    <!--begin::Link-->
+                    <a href="{{ route('password.request') }}" class="link-primary">Forgot Password ?</a>
+                    <!--end::Link-->
+                </div>
+                <!--end::Wrapper-->
+                <!--begin::Submit button-->
+                <div class="d-grid mb-10">
+                    <button type="submit" class="btn btn-primary">
+                        {{ __('Login') }}
+                    </button>
+                </div>
+                <!--end::Submit button-->
+                <!--begin::Sign up-->
+                <div class="text-gray-500 text-center fw-semibold fs-6">Not a Member yet?
+                    <a href="" class="link-primary">Sign up</a>
+                </div>
+                <!--end::Sign up-->
+            </form>
+            <!--end::Form-->
         </div>
-        <!--begin::Body-->
-    </form>
-    <!--end::Form-->
+        <!--end::Content-->
+    </div>
+    <!--end::Wrapper-->
 </div>
 @endsection
