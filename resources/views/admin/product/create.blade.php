@@ -165,6 +165,7 @@
                 <!--begin::Form-->
                 <form class="form d-flex flex-column flex-lg-row" method="post" action="{{ route('product.store')}}">
                     @CSRF
+                    <input type="hidden" name="u_id" value="{{Auth::user()->id}}" />
                     <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
                         <!--begin:::Tabs-->
                         <!--end:::Tabs-->
@@ -249,17 +250,10 @@
                                                 <label class="required form-label">Categories</label>
                                                 <!--end::Label-->
                                                 <!--begin::Select2-->
-                                                <select class="form-select mb-2" data-control="select2">
-                                                    <option value="Computers">Computers</option>
-                                                    <option value="Watches">Watches</option>
-                                                    <option value="Headphones">Headphones</option>
-                                                    <option value="Footwear">Footwear</option>
-                                                    <option value="Cameras">Cameras</option>
-                                                    <option value="Shirts">Shirts</option>
-                                                    <option value="Household">Household</option>
-                                                    <option value="Handbags">Handbags</option>
-                                                    <option value="Wines">Wines</option>
-                                                    <option value="Sandals">Sandals</option>
+                                                <select class="form-select mb-2" data-control="select2" name="cart_id">
+                                                    @foreach ($categorys as $key=> $category)
+                                                    <option value="{{$key}}">{{$category}}</option>
+                                                    @endforeach
                                                 </select>
                                                 <a href="{{route('category.create')}}"
                                                     class="btn btn-light-primary btn-sm">
@@ -281,20 +275,11 @@
                                                 <label class="required form-label">Brand</label>
                                                 <!--end::Label-->
                                                 <!--begin::Select2-->
-                                                <select class="form-select mb-2" data-control="select2"
-                                                    data-placeholder="Select an option" data-allow-clear="true"
-                                                    multiple="multiple">
-                                                    <option></option>
-                                                    <option value="Computers">Computers</option>
-                                                    <option value="Watches">Watches</option>
-                                                    <option value="Headphones">Headphones</option>
-                                                    <option value="Footwear">Footwear</option>
-                                                    <option value="Cameras">Cameras</option>
-                                                    <option value="Shirts">Shirts</option>
-                                                    <option value="Household">Household</option>
-                                                    <option value="Handbags">Handbags</option>
-                                                    <option value="Wines">Wines</option>
-                                                    <option value="Sandals">Sandals</option>
+                                                <select class="form-select mb-2" name="b_id" data-control="select2"
+                                                    data-placeholder="Select an option" data-allow-clear="true">
+                                                    @foreach ($brands as $key=> $brand)
+                                                    <option value="{{$key}}">{{$brand}}</option>
+                                                    @endforeach
                                                 </select>
                                                 <a href="{{route('brand.create')}}"
                                                     class="btn btn-light-primary btn-sm mb-10">

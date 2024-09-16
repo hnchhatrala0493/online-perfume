@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Brand;
+use App\Models\Category;
 
 class ProductController extends Controller {
     /**
@@ -14,7 +16,8 @@ class ProductController extends Controller {
     */
 
     public function index() {
-        return view( 'admin.product.index' );
+        $productList = Product::get();
+        return view( 'admin.product.index', compact( 'productList' ) );
     }
 
     /**
@@ -24,7 +27,9 @@ class ProductController extends Controller {
     */
 
     public function create() {
-        return view( 'admin.product.create' );
+        $categorys = Category::pluck( 'name', 'id' );
+        $brands = Brand::pluck( 'name', 'id' );
+        return view( 'admin.product.create', compact( 'categorys', 'brands' ) );
     }
 
     /**
@@ -35,7 +40,19 @@ class ProductController extends Controller {
     */
 
     public function store( StoreProductRequest $request ) {
-        dd( $request );
+        $store = Product::create( [
+            'name'=>$request->product_name,
+            'price'=>$request->price,
+            'quantity_type'=>$request->quantity_type,
+            'quanty'=>$request->quanty,
+            'u_id'=>$request->u_id,
+            'cart_id'=>$request->cart_id,
+            'b_id'=>$request->b_id
+        ] );
+
+        if ( $store ) {
+            return redirect()->route( 'product.index' );
+        }
     }
 
     /**
@@ -57,7 +74,9 @@ class ProductController extends Controller {
     */
 
     public function edit( Product $product ) {
-        return view( 'admin.product.edit' );
+        $categorys = Category::pluck( 'name', 'id' );
+        $brands = Brand::pluck( 'name', 'id' );
+        return view( 'admin.product.edit', compact( 'categorys', 'brands', 'product' ) );
     }
 
     /**
@@ -69,7 +88,18 @@ class ProductController extends Controller {
     */
 
     public function update( UpdateProductRequest $request, Product $product ) {
-        //
+        $updateProduct = Product::where( 'id', $product->id )->update( [
+            'name'=>$request->product_name,
+            'price'=>$request->price,
+            'quantity_type'=>$request->quantity_type,
+            'quanty'=>$request->quanty,
+            'u_id'=>$request->u_id,
+            'cart_id'=>$request->cart_id,
+            'b_id'=>$request->b_id
+        ] );
+        if ( $updateProduct ) {
+            return redirect()->route( 'product.index' );
+        }
     }
 
     /**

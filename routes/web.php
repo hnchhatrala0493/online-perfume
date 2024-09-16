@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -25,5 +26,6 @@ Route::group(['prefix'=>'admin'],function(){
     Route::resource('product',ProductController::class);
     Route::resource('category',CategoryController::class);
     Route::resource('brand',BrandController::class);
+    Route::resource('orders',OrdersController::class);
     Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
