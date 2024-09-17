@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class OrdersController extends Controller {
+class CustomersController extends Controller {
     /**
     * Display a listing of the resource.
     *
@@ -13,8 +13,8 @@ class OrdersController extends Controller {
     */
 
     public function index() {
-        $orderList = Order::orderBy( 'created_at', 'DESC' )->get();
-        return view( 'admin.order.index', compact( 'orderList' ) );
+        $customerList = User::where( 'role_id', 3 )->orderBy( 'created_at', 'DESC' )->get();
+        return view( 'admin.users.index', compact( 'customerList' ) );
     }
 
     /**
@@ -24,7 +24,7 @@ class OrdersController extends Controller {
     */
 
     public function create() {
-        return view( 'admin.order.index' );
+        //
     }
 
     /**
@@ -35,7 +35,7 @@ class OrdersController extends Controller {
     */
 
     public function store( Request $request ) {
-        return view( 'admin.order.index' );
+        //
     }
 
     /**
@@ -46,7 +46,7 @@ class OrdersController extends Controller {
     */
 
     public function show( $id ) {
-        return view( 'admin.order.show' );
+        //
     }
 
     /**
@@ -57,7 +57,7 @@ class OrdersController extends Controller {
     */
 
     public function edit( $id ) {
-        return view( 'admin.order.edit' );
+        //
     }
 
     /**

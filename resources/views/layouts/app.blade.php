@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <!--begin::Head-->
-
 <head>
     <base href="../">
-    <title>Metronic - the world's #1 selling Bootstrap Admin Theme Ecosystem for HTML, Vue, React, Angular &amp; Laravel
-        by Keenthemes</title>
+    <title>{{ env('APP_NAME')}}</title>
     <meta charset="utf-8" />
     <meta name="description"
         content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Blazor, Django, Flask &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
@@ -131,7 +129,12 @@
                 @include('layouts.sidebar')
                 <!--end::sidebar-->
                 <!--begin::Main-->
-                @yield('main')
+                <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+                <!--begin::Content wrapper-->
+                    <div class="d-flex flex-column flex-column-fluid">
+                        @yield('main')
+                    </div>
+                </div>
                 <!--end:::Main-->
             </div>
             <!--end::Wrapper-->
