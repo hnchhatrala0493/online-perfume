@@ -205,8 +205,8 @@
                             <li class="onhover-div"><a href="#"><i class="iconsax" data-icon="user-2"></i></a>
                                 <div class="onhover-show-div user">
                                     <ul>
-                                        <li> <a href="login.html">Login </a></li>
-                                        <li> <a href="sign-up.html">Register</a></li>
+                                        <li> <a href="{{route('front.login')}}">Login </a></li>
+                                        <li> <a href="{{route('front.register')}}">Register</a></li>
                                     </ul>
                                 </div>
                             </li>

@@ -46,7 +46,8 @@ class CustomersController extends Controller {
     */
 
     public function show( $id ) {
-        //
+        $customerProfile = User::find( $id );
+        return view( 'admin.users.show', compact( 'customerProfile' ) );
     }
 
     /**

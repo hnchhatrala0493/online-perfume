@@ -10,6 +10,10 @@ use App\Http\Controllers\ {
     HomePageController,
     DashboardController
 };
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\FrontForgotPasswordController;
+use App\Http\Controllers\FrontLoginController;
+use App\Http\Controllers\FrontRegisterController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,5 +40,10 @@ use Illuminate\Support\Facades\Route;
     });
     
     Route::group( [  ], function() {
+        Route::post('/registration',[FrontRegisterController::class,'registerHandle'])->name('front.registerhandle');
+        Route::get('/register',[FrontRegisterController::class,'register'])->name('front.register');
+        Route::get('/forgot/password',[FrontForgotPasswordController::class,'forgotPasswordByEmail'])->name('front.forgot.password');
+        Route::post('/handle/',[FrontLoginController::class,'loginHandle'])->name('front.loginHandle');
+        Route::get('/login',[FrontLoginController::class,'frontLogin'])->name('front.login');
         Route::get( '/', [ HomePageController::class, 'index' ] )->name( 'homepage' );
     });

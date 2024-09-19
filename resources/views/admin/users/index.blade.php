@@ -36,15 +36,11 @@
                         </span>
                         <!--end::Svg Icon-->
                         <input type="text" data-kt-ecommerce-product-filter="search"
-                            class="form-control form-control-solid w-250px ps-14"
-                            placeholder="Search Product" />
+                            class="form-control form-control-solid w-250px ps-14" placeholder="Search Product" />
                     </div>
                     <!--end::Search-->
                 </div>
                 <!--end::Card title-->
-                <!--begin::Card toolbar-->
-                
-                <!--end::Card toolbar-->
             </div>
             <!--end::Card header-->
             <!--begin::Card body-->
@@ -62,9 +58,12 @@
                                         value="1" />
                                 </div>
                             </th>
-                            <th class="min-w-200px">Customer Name</th>
+                            <th class="min-w-20px">Customer Name</th>
+                            <th class="min-w-20px">State Name</th>
+                            <th class="min-w-20px">City Name</th>
                             <th class="text-end min-w-100px">Email</th>
                             <th class="text-end min-w-100px">Phone</th>
+                            <th class="text-end min-w-100px">Address</th>
                             <th class="text-end min-w-70px">Actions</th>
                         </tr>
                         <!--end::Table row-->
@@ -83,23 +82,19 @@
                             <!--end::Checkbox-->
                             <!--begin::Category=-->
                             <td>
-                                <div class="d-flex align-items-center">
-                                    <!--begin::Thumbnail-->
-                                
-                                    <!--end::Thumbnail-->
-                                    <div class="ms-5">
-                                        <!--begin::Title-->
-                                        <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html"
-                                            class="text-gray-800 text-hover-primary fs-5 fw-bold"
-                                            data-kt-ecommerce-product-filter="product_name">{{$customer->name}}</a>
-                                        <!--end::Title-->
-                                    </div>
+                                <div class="ms-5">
+                                    <!--begin::Title-->
+                                    <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html"
+                                        class="text-gray-800 text-hover-primary fs-5 fw-bold"
+                                        data-kt-ecommerce-product-filter="product_name">{{$customer->name}}</a>
+                                    <!--end::Title-->
                                 </div>
                             </td>
                             <!--end::Category=-->
                             <!--begin::SKU=-->
-                            
+                            <td>{{ App\Models\State::find($customer->s_id)->name}}</td>
                             <!--end::SKU=-->
+                            <td>{{ App\Models\City::find($customer->c_id)->name}}</td>
                             <!--begin::Qty=-->
                             <td class="text-end pe-0">
                                 {{$customer->email}}
@@ -109,6 +104,7 @@
                             <td class="text-end pe-0">
                                 {{$customer->phone}}
                             </td>
+                            <td>{{ $customer->address}}</td>
                             <!--end::Price=-->
                             <!--begin::Action=-->
                             <td class="text-end">
@@ -131,13 +127,17 @@
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
                                         <a href="{{route('customers.edit',['customer'=>$customer->id])}}"
-                                            class="menu-link px-3">Edit</a>
+                                            class="menu-link px-3">Edit Profile</a>
+                                    </div>
+                                    <div class="menu-item px-3">
+                                        <a href="{{route('customers.show',['customer'=>$customer->id])}}"
+                                            class="menu-link px-3">View Profile</a>
                                     </div>
                                     <!--end::Menu item-->
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
                                         <a href="#" class="menu-link px-3"
-                                            data-kt-ecommerce-product-filter="delete_row">Delete</a>
+                                            data-kt-ecommerce-product-filter="delete_row">Delete Profile</a>
                                     </div>
                                     <!--end::Menu item-->
                                 </div>
@@ -152,7 +152,7 @@
                                 <div class="form-check form-check-sm form-check-custom form-check-solid">
                                     <input class="form-check-input" type="checkbox" value="1" />
                                 </div>
-                            </td>                                    
+                            </td>
                         </tr>
                         @endforelse
                         <!--end::Table row-->
@@ -161,11 +161,11 @@
                 </table>
                 <!--end::Table-->
             </div>
-            <!--end::Card body-->
         </div>
-        <!--end::Products-->
+        <!--end::Card body-->
     </div>
-    <!--end::Content container-->
+    <!--end::Products-->
 </div>
+<!--end::Content container-->
 <!--end::Content-->
 @endsection
