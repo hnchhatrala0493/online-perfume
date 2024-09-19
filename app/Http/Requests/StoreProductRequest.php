@@ -25,6 +25,7 @@ class StoreProductRequest extends FormRequest {
     public function rules() {
         return [
             'product_name'=>'required',
+            'product_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'price'=>'required',
             'quanty'=>'required',
             'quantity_type'=>'required'

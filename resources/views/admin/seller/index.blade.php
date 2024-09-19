@@ -76,7 +76,7 @@
                         </div>
                         <!--end::Card title-->
                         <!--begin::Card toolbar-->
-                       
+
                         <!--end::Card toolbar-->
                     </div>
                     <!--end::Card header-->
@@ -95,11 +95,9 @@
                                                 value="1" />
                                         </div>
                                     </th>
-                                    <th class="min-w-200px">Product</th>
-                                    <th class="text-end min-w-100px">Brand</th>
-                                    <th class="text-end min-w-100px">Category</th>
-                                    <th class="text-end min-w-70px">Qty</th>
-                                    <th class="text-end min-w-100px">Price</th>
+                                    <th class="min-w-200px">Seller Name</th>
+                                    <th class="min-w-200px">Email</th>
+                                    <th class="min-w-200px">Phone</th>
                                     <th class="text-end min-w-70px">Actions</th>
                                 </tr>
                                 <!--end::Table row-->
@@ -136,7 +134,7 @@
                                         </div>
                                     </td>
                                     <!--end::Category=-->
-                                    <!--begin::SKU=-->                                    
+                                    <!--begin::SKU=-->
                                     <!--end::SKU=-->
                                     <!--begin::Qty=-->
                                     <td class="text-end pe-0" data-order="9">

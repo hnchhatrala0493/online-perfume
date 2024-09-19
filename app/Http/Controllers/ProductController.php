@@ -40,8 +40,11 @@ class ProductController extends Controller {
     */
 
     public function store( StoreProductRequest $request ) {
+        $imageName = time().'.'.$request->product_image->extension();
+        $request->product_image->move( public_path( 'uploads/products_images' ), $imageName );
         $store = Product::create( [
             'name'=>$request->product_name,
+            'product_image'=>$imageName,
             'price'=>$request->price,
             'quantity_type'=>$request->quantity_type,
             'quanty'=>$request->quanty,

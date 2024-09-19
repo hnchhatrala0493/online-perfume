@@ -60,90 +60,6 @@
                             <!--end::Svg Icon-->Filter
                         </a>
                         <!--end::Menu toggle-->
-                        <!--begin::Menu 1-->
-                        <div class="menu menu-sub menu-sub-dropdown w-250px w-md-300px" data-kt-menu="true"
-                            id="kt_menu_62cfa2de39727">
-                            <!--begin::Header-->
-                            <div class="px-7 py-5">
-                                <div class="fs-5 text-dark fw-bold">Filter Options</div>
-                            </div>
-                            <!--end::Header-->
-                            <!--begin::Menu separator-->
-                            <div class="separator border-gray-200"></div>
-                            <!--end::Menu separator-->
-                            <!--begin::Form-->
-                            <div class="px-7 py-5">
-                                <!--begin::Input group-->
-                                <div class="mb-10">
-                                    <!--begin::Label-->
-                                    <label class="form-label fw-semibold">Status:</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <div>
-                                        <select class="form-select form-select-solid" data-kt-select2="true"
-                                            data-placeholder="Select option"
-                                            data-dropdown-parent="#kt_menu_62cfa2de39727" data-allow-clear="true">
-                                            <option></option>
-                                            <option value="1">Approved</option>
-                                            <option value="2">Pending</option>
-                                            <option value="2">In Process</option>
-                                            <option value="2">Rejected</option>
-                                        </select>
-                                    </div>
-                                    <!--end::Input-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Input group-->
-                                <div class="mb-10">
-                                    <!--begin::Label-->
-                                    <label class="form-label fw-semibold">Member Type:</label>
-                                    <!--end::Label-->
-                                    <!--begin::Options-->
-                                    <div class="d-flex">
-                                        <!--begin::Options-->
-                                        <label class="form-check form-check-sm form-check-custom form-check-solid me-5">
-                                            <input class="form-check-input" type="checkbox" value="1" />
-                                            <span class="form-check-label">Author</span>
-                                        </label>
-                                        <!--end::Options-->
-                                        <!--begin::Options-->
-                                        <label class="form-check form-check-sm form-check-custom form-check-solid">
-                                            <input class="form-check-input" type="checkbox" value="2"
-                                                checked="checked" />
-                                            <span class="form-check-label">Customer</span>
-                                        </label>
-                                        <!--end::Options-->
-                                    </div>
-                                    <!--end::Options-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Input group-->
-                                <div class="mb-10">
-                                    <!--begin::Label-->
-                                    <label class="form-label fw-semibold">Notifications:</label>
-                                    <!--end::Label-->
-                                    <!--begin::Switch-->
-                                    <div
-                                        class="form-check form-switch form-switch-sm form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" value="" name="notifications"
-                                            checked="checked" />
-                                        <label class="form-check-label">Enabled</label>
-                                    </div>
-                                    <!--end::Switch-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Actions-->
-                                <div class="d-flex justify-content-end">
-                                    <button type="reset" class="btn btn-sm btn-light btn-active-light-primary me-2"
-                                        data-kt-menu-dismiss="true">Reset</button>
-                                    <button type="submit" class="btn btn-sm btn-primary"
-                                        data-kt-menu-dismiss="true">Apply</button>
-                                </div>
-                                <!--end::Actions-->
-                            </div>
-                            <!--end::Form-->
-                        </div>
-                        <!--end::Menu 1-->
                     </div>
                     <!--end::Filter menu-->
                     <!--begin::Secondary button-->
@@ -163,7 +79,8 @@
             <!--begin::Content container-->
             <div id="kt_app_content_container" class="app-container container-xxl">
                 <!--begin::Form-->
-                <form class="form d-flex flex-column flex-lg-row" method="post" action="{{ route('product.store')}}">
+                <form class="form d-flex flex-column flex-lg-row" enctype="multipart/form-data" method="post"
+                    action="{{ route('product.store')}}">
                     @CSRF
                     <input type="hidden" name="u_id" value="{{Auth::user()->id}}" />
                     <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
@@ -179,41 +96,54 @@
                                     <div class="card card-flush py-4">
                                         <div class="card-body pt-0">
                                             <!--begin::Input group-->
-                                            <div class="mb-5 fv-row">
-                                                <!--begin::Label-->
-                                                <label class="required form-label">Product Name</label>
-                                                <!--end::Label-->
-                                                <!--begin::Input-->
-                                                <input type="text" name="product_name"
-                                                    class="form-control mb-2 @error('product_name') is-invalid @enderror"
-                                                    placeholder="Product name" value="" />
-                                                @error('product_name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
-                                            </div>
-                                            <div class="mb-5 fv-row">
-                                                <!--begin::Label-->
-                                                <label class="required form-label">Price</label>
-                                                <!--end::Label-->
-                                                <!--begin::Input-->
-                                                <input type="text" name="price"
-                                                    class="form-control mb-2 @error('price') is-invalid @enderror"
-                                                    placeholder="Product price" value="" />
-
-                                                @error('price')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
-                                            </div>
-                                            <div class="mb-5 fv-row">
-                                                <div class="col-4">
+                                            <div class="col-md-12 row">
+                                                <div class="mb-3 col-md-6 fv-row">
                                                     <!--begin::Label-->
-                                                    <label class="required form-label">Quantity</label>
+                                                    <label class="required form-label">Product Name</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
+                                                    <input type="text" name="product_name"
+                                                        class="form-control mb-2 @error('product_name') is-invalid @enderror"
+                                                        placeholder="Product name" value="" />
+                                                    @error('product_name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="mb-3 col-md-6">
+                                                    <!--begin::Label-->
+                                                    <label class="required form-label">Price</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <input type="text" name="price"
+                                                        class="form-control mb-2 @error('price') is-invalid @enderror"
+                                                        placeholder="Product price" value="" />
+
+                                                    @error('price')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 row">
+                                                <!--begin::Label-->
+                                                <div class="col-md-12">
+                                                    <label class="required form-label">Product Images</label>
+                                                    <input type="file" name="product_image"
+                                                        class="form-control mb-2 @error('product_image') is-invalid @enderror"
+                                                        placeholder="Product name" value="" />
+                                                    @error('product_image')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="required form-label">Quantity</label>
                                                     <input type="number" name="quanty"
                                                         class="form-control @error('quanty') is-invalid @enderror"
                                                         placeholder="Product quantity" value="" />
@@ -224,7 +154,7 @@
                                                     </span>
                                                     @enderror
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-md-6 mb-3">
                                                     <!--begin::Label-->
                                                     <label class="required form-label">Quantity Type</label>
                                                     <!--end::Label-->
@@ -245,82 +175,83 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <!--end::Input group-->
-                                            <div class="mb-5 fv-row">
-                                                <label class="required form-label">Categories</label>
-                                                <!--end::Label-->
-                                                <!--begin::Select2-->
-                                                <select class="form-select mb-2" data-control="select2" name="cart_id">
-                                                    @foreach ($categorys as $key=> $category)
-                                                    <option value="{{$key}}">{{$category}}</option>
-                                                    @endforeach
-                                                </select>
-                                                <a href="{{route('category.create')}}"
-                                                    class="btn btn-light-primary btn-sm">
-                                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr087.svg-->
-                                                    <span class="svg-icon svg-icon-2">
-                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <rect opacity="0.5" x="11" y="18" width="12" height="2"
-                                                                rx="1" transform="rotate(-90 11 18)"
-                                                                fill="currentColor" />
-                                                            <rect x="6" y="11" width="12" height="2" rx="1"
-                                                                fill="currentColor" />
-                                                        </svg>
-                                                    </span>
-                                                    <!--end::Svg Icon-->Create new category
-                                                </a>
+                                            <div class="col-md-12 row">
+                                                <div class="col-md-6">
+                                                    <label class="required form-label">Categories</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Select2-->
+                                                    <select class="form-select mb-2" data-control="select2"
+                                                        name="cart_id">
+                                                        @foreach ($categorys as $key=> $category)
+                                                        <option value="{{$key}}">{{$category}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <a href="{{route('category.create')}}"
+                                                        class="btn btn-light-primary btn-sm">
+                                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr087.svg-->
+                                                        <span class="svg-icon svg-icon-2">
+                                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <rect opacity="0.5" x="11" y="18" width="12" height="2"
+                                                                    rx="1" transform="rotate(-90 11 18)"
+                                                                    fill="currentColor" />
+                                                                <rect x="6" y="11" width="12" height="2" rx="1"
+                                                                    fill="currentColor" />
+                                                            </svg>
+                                                        </span>
+                                                        Category
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="required form-label">Brand</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Select2-->
+                                                    <select class="form-select mb-2" name="b_id" data-control="select2"
+                                                        data-placeholder="Select an option" data-allow-clear="true">
+                                                        @foreach ($brands as $key=> $brand)
+                                                        <option value="{{$key}}">{{$brand}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <a href="{{route('brand.create')}}"
+                                                        class="btn btn-light-primary btn-sm mb-10">
+                                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr087.svg-->
+                                                        <span class="svg-icon svg-icon-2">
+                                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <rect opacity="0.5" x="11" y="18" width="12" height="2"
+                                                                    rx="1" transform="rotate(-90 11 18)"
+                                                                    fill="currentColor" />
+                                                                <rect x="6" y="11" width="12" height="2" rx="1"
+                                                                    fill="currentColor" />
+                                                            </svg>
+                                                        </span>
+                                                        <!--end::Svg Icon-->Brand
+                                                    </a>
+                                                </div>
                                             </div>
-                                            <div class="mb-5 fv-row">
-                                                <label class="required form-label">Brand</label>
-                                                <!--end::Label-->
-                                                <!--begin::Select2-->
-                                                <select class="form-select mb-2" name="b_id" data-control="select2"
-                                                    data-placeholder="Select an option" data-allow-clear="true">
-                                                    @foreach ($brands as $key=> $brand)
-                                                    <option value="{{$key}}">{{$brand}}</option>
-                                                    @endforeach
-                                                </select>
-                                                <a href="{{route('brand.create')}}"
-                                                    class="btn btn-light-primary btn-sm mb-10">
-                                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr087.svg-->
-                                                    <span class="svg-icon svg-icon-2">
-                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <rect opacity="0.5" x="11" y="18" width="12" height="2"
-                                                                rx="1" transform="rotate(-90 11 18)"
-                                                                fill="currentColor" />
-                                                            <rect x="6" y="11" width="12" height="2" rx="1"
-                                                                fill="currentColor" />
-                                                        </svg>
-                                                    </span>
-                                                    <!--end::Svg Icon-->Create new brand
-                                                </a>
+                                            <div class="d-flex justify-content-end">
+                                                <!--begin::Button-->
+                                                <a href="../../demo1/dist/apps/ecommerce/catalog/products.html"
+                                                    id="kt_ecommerce_add_product_cancel"
+                                                    class="btn btn-light me-5">Cancel</a>
+                                                <!--end::Button-->
+                                                <!--begin::Button-->
+                                                <button type="submit" id="kt_ecommerce_add_product_submit"
+                                                    class="btn btn-primary">
+                                                    <span class="indicator-label">Save Changes</span>
+                                                    <span class="indicator-progress">Please wait...
+                                                        <span
+                                                            class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                                </button>
+                                                <!--end::Button-->
                                             </div>
                                         </div>
                                         <!--end::Card header-->
                                     </div>
                                 </div>
                             </div>
-                            <!--end::Tab pane-->
-                            <!--begin::Tab pane-->
-
-                            <!--end::Tab pane-->
                         </div>
                         <!--end::Tab content-->
-                        <div class="d-flex justify-content-end">
-                            <!--begin::Button-->
-                            <a href="../../demo1/dist/apps/ecommerce/catalog/products.html"
-                                id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
-                            <!--end::Button-->
-                            <!--begin::Button-->
-                            <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
-                                <span class="indicator-label">Save Changes</span>
-                                <span class="indicator-progress">Please wait...
-                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                            </button>
-                            <!--end::Button-->
-                        </div>
                     </div>
                     <!--end::Main column-->
                 </form>

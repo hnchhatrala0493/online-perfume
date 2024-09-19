@@ -251,10 +251,10 @@
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <!--begin::Thumbnail-->
-                                            <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html"
-                                                class="symbol symbol-50px">
-                                                <span class="symbol-label"
-                                                    style="background-image:url(assets/media//stock/ecommerce/49.gif);"></span>
+                                            <a href="" class="symbol symbol-50px">
+                                                <img src="{{ asset('uploads/products_images/' . $product->product_image) }}"
+                                                    alt="Product Image" />
+
                                             </a>
                                             <!--end::Thumbnail-->
                                             <div class="ms-5">

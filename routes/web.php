@@ -5,9 +5,11 @@ use App\Http\Controllers\ {
     OrdersController,
     CustomersController,
     CategoryController,
-    BrandController
+    BrandController,
+    SellersController,
+    HomePageController,
+    DashboardController
 };
-use App\Http\Controllers\SellersController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +32,9 @@ use Illuminate\Support\Facades\Route;
         Route::resource( 'orders', OrdersController::class );
         Route::resource( 'customers', CustomersController::class );
         Route::resource( 'seller', SellersController::class );
-        Route::get( '/dashboard', [ App\Http\Controllers\HomeController::class, 'index' ] )->name( 'home' );
-    }
-);
+        Route::get( '/dashboard', [ DashboardController::class, 'index' ] )->name( 'dashboard.index' );
+    });
+    
+    Route::group( [  ], function() {
+        Route::get( '/', [ HomePageController::class, 'index' ] )->name( 'homepage' );
+    });
